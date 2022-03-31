@@ -20,7 +20,7 @@ const Spotify = {
       const expiresIn = Number(expiresInMatch[1]);
       // This clears the access token once it expries so that we can grab a new one thereafter
       window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
-      window.history.pushState("Access Token", null, "/");
+      window.history.pushState("Access Token", null, "/spotify_jammming/");
       return accessToken;
     } else {
       const accessURL = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public playlist-modify-private&redirect_uri=${redirectURI}`;
