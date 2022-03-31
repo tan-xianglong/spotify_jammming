@@ -27,6 +27,34 @@ const Spotify = {
       window.location = accessURL;
     }
   },
+
+    async search (term) {
+      this.getAccessToken();
+      const endpoint = `https://api.spotify.com/v1/search?type=track&q=${term}`;
+      const option = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      };
+      try{
+        const response = await fetch(endpoint, option);
+        if(response.ok){
+          const jsonResponse = await response.json();
+          const trackList = jsonResponse.tracks.items.map(track => ({
+            id: track.id,
+            name: track.name,
+            artist: track.artists[0].name,
+            album: track.album.name,
+            uri: track.uri,
+          }));
+          console.log(trackList);
+          return trackList;
+        } throw new Error('Request failed!');
+      } catch (error) {
+        console.log(error);
+      }
+    }
 };
 
 export default Spotify;
