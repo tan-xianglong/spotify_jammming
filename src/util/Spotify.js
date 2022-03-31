@@ -1,5 +1,5 @@
 const clientID = "22c6f400d36c48f389b3ee33bf7182d6";
-const redirectURI = "http://localhost:3000/";
+const redirectURI = "https://tan-xianglong.github.io/spotify_jammming/";
 
 let accessToken;
 
